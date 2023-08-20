@@ -1,7 +1,6 @@
-import React from 'react';
-import './App.scss'
+import './App.css'
 import Header from './components/header/Header';
-import Todos from './components/todos/Todos';
+import Todos from './components/listTodos/Todos';
 
 function App() {
   return (

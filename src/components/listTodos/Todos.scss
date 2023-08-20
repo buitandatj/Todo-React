@@ -1,43 +1,62 @@
 @import'../buttons/Button.scss';
 
+$my-color: red;
 .form {
+    user-select: none;
     min-height: 400px;
     width: 50%;
     position: relative;
     justify-content: center;
-    background-color: aqua;
     margin: 0 25%;
+    padding-bottom: 100px;
+
+    .btn_checkAll {
+        margin-left: 100px;
+        border: none;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
 
     .form-top {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-top: 30px;
+        padding-top: 0;
 
-        ul{
-            .form-todo{
+        ul {
+            .form-todo {
                 display: flex;
                 justify-content: center;
                 padding-top: 30px;
 
-                input{
+                input {
                     width: 15px;
                     height: 15px;
+                    margin-top: 5px;
                     position: absolute;
                     left: 100px;
+
                 }
-                button{
-                    background-color: red;
-                    color: white;
-                    border: none;
+
+                button {
+                    background-color: transparent;
+                    color: $my-color;
+                    border: 1px solid $my-color;
                     border-radius: 5px;
                     padding: 3px 6px;
                     position: absolute;
                     right: 100px;
+
+                    &:hover {
+                        background-color: $my-color;
+                        color: white;
+                        border: 1px solid $my-color;
+                    }
                 }
             }
         }
 
 
     }
+
 }

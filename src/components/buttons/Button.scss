@@ -4,13 +4,17 @@
 @mixin button(){
     height: 50px;
     width: 90px;
-    border: none;
+    border: 2px solid black;
     margin-left: 5px;
     border-radius: 5px;
-    background-color: $main-color;
     color:$text-color;
     cursor: pointer;
-}
+    background-color: rgba(197, 197, 196, 0.459);;}
 .button{
     @include button();
+    &:hover{
+        background-color:black;
+        border:  2px solid rgba(197, 197, 196, 0.459);
+        color: wheat;
+    }
 }

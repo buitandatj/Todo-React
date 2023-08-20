@@ -1,4 +1,5 @@
 @import'../buttons/Button.scss';
+@import '../listTodos/Todos.scss';
 
 form {
     display: flex;
@@ -9,9 +10,15 @@ form {
     input {
         height: 50px;
         width: 400px;
-        border: none;
+        border: 2px solid black;
         border-radius: 5px;
         outline: none;
+        background-color: transparent;
+        caret-color: $my-color;
+        &::placeholder{
+            padding-left: 5px;
+        }
+      
     }
 
     .btn-add {
@@ -21,6 +28,8 @@ form {
 }
 
 .btn-bot {
+    margin-top: 100px;
+    min-height: content;
     position: absolute;
     bottom: 10px;
     left: 20%;

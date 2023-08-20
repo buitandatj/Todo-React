@@ -1,9 +1,12 @@
+import { ButtonProps } from '../addTodo/AddTodo';
 import './Button.scss'
-const Button = (title:string | any) => {
-    
+
+
+const Button = ({ btn }: { btn: ButtonProps }) => {
+
     return (
-        <button className='button'>
-            {title.title}
+        <button className='button' onClick={btn.onClick}>
+            {btn.title}
         </button>
     );
 };
