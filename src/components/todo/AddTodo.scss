@@ -1,0 +1,27 @@
+@import'../buttons/Button.scss';
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+
+    input {
+        height: 50px;
+        width: 400px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .btn-add {
+        @include button()
+    }
+
+}
+
+.btn-bot {
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+}

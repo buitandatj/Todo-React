@@ -1,0 +1,16 @@
+
+@import '../header/Header.scss';
+
+@mixin button(){
+    height: 50px;
+    width: 90px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: $main-color;
+    color:$text-color;
+    cursor: pointer;
+}
+.button{
+    @include button();
+}
