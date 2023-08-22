@@ -18,37 +18,42 @@ const Todos = () => {
     useEffect(() => {
         const getTodo = async () => {
             try {
-                const params: Todo  ={id: 0, title: "", completed: false};
-        
+                const params:Todo = {
+                    id: 0,
+                    title: '',
+                    completed: false
+                };
+
                 if (filter === "COMPLETE") params.completed = true;
                 if (filter === "ACTIVE") params.completed = false;
 
                 const res = await fetchApi({
                     url: 'todos',
-                    method:'get'
+                    method: 'get'
                 })
-                console.log(res)
-                setTodos(res)
+                if (filter === "ALL") {
+                    setTodos(res)
+                } else {
+                    const filteredTodos = res.filter((todo: { completed: boolean; }) => todo.completed === params.completed)
+                    setTodos(filteredTodos)
+                }
             } catch (error) {
                 console.log(error);
             }
         }
         getTodo()
-    }, [filter,todos])
+    }, [filter])
 
     const addTodo = async (title: string) => {
         try {
-             await fetchApi({
-                url: 'todos/',
-                method: 'post',
-                body: {
-                    id: Math.floor(Math.random()*999),
-                    title,
-                    completed:false
-                }
-            });
-            // const newTodo: Todo[] = [...todos, res.data]
-            // setTodos(newTodo)
+            const res = await myAxios.post('todos',
+            {
+                id: Math.floor(Math.random() * 999),
+                title,
+                completed: false
+            })
+            const newTodo: Todo[] = [...todos, res.data]
+            setTodos(newTodo)
         } catch (error) {
             console.log(error);
         }
