@@ -1,21 +1,21 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import './AddTodo.scss';
 import Button from '../buttons/Button';
-import { FILTER, Todo } from '../listTodos/Todos';
+import { FILTER, ITodo } from '../formTodo/FormTodos';
 import myAxios from '../../api/Api';
-
-interface IAddToDo {
+import { alertInput } from '../../constants/Message';
+export interface IAddToDo {
     addTodo: (todo: string) => void;
-    todos: Todo[];
-    setTodos: (todos: Todo[]) => void;
-    setFilter: (arg0: FILTER) => void
+    todos: ITodo[];
+    setTodos: (todos: ITodo[]) => void;
+    setFilter: (arg0: FILTER) => void;
 }
 export interface ButtonProps {
     title: string;
     onClick: () => void;
 }
 
-const AddTodo = ({ addTodo, todos, setTodos, setFilter }: IAddToDo) => {
+const AddTodo = ({ addTodo, todos, setTodos, setFilter}: IAddToDo) => {
     const [todo, setTodo] = useState<string>('')
     const [show, setShow] = useState<boolean>(true)
 
@@ -57,13 +57,12 @@ const AddTodo = ({ addTodo, todos, setTodos, setFilter }: IAddToDo) => {
     }
     const submitTodo = (e: ChangeEvent<HTMLFormElement>) => {
         if (todo === '') {
-            alert('Vui lòng nhập...')
+            alertInput()
         } else {
             addTodo(todo)
         }
         e.preventDefault();
         setTodo('')
-
     }
 
     const handleClear = async () => {
@@ -90,10 +89,7 @@ const AddTodo = ({ addTodo, todos, setTodos, setFilter }: IAddToDo) => {
                     <i className="fa-solid fa-chevron-down"></i>
                     <button className='btn-add' type='submit'>Lưu</button>
 
-
                 </form>
-
-
             </div>
             <div className='btn-bot'>
                 {listBtn.map(btn => (

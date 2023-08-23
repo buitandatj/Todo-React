@@ -1,13 +1,19 @@
 import './App.css'
 import Header from './components/header/Header';
-import Todos from './components/listTodos/Todos';
+import Todos from './components/formTodo/FormTodos';
+import {  loadingContext } from './context/ContextLoading';
+import { useState } from 'react';
 
 function App() {
+  const [loading, setLoading] = useState(true);
   return (
-    <div className='App'>
-      <Header />
-      <Todos />
-    </div>
+    <loadingContext.Provider value={{loading,setLoading}} >
+      <div className='App'>
+        <Header />
+        <Todos />
+      </div>
+    </loadingContext.Provider>
+
   );
 }
 
