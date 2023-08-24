@@ -3,13 +3,14 @@ import { ITodo } from '../formTodo/FormTodos';
 import { fetchApi } from '../../api/Api';
 import { confirm } from '../../constants/Message';
 import TodoItem from '../todoItem/TodoItem';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
 
 
 const ListTodos = ({ todos, setTodos }: IAddToDo) => {
-    const [loading, setLoading] = useState<boolean>(true)
+    const {  setLoading } = useContext<LoadingContextType>(loadingContext);
 
-    const Iscompleted = async (id: number) => {
+    const IsCompleted = async (id: number) => {
         try {
             let obj = null;
             const newTodos: ITodo[] = todos.map((todo: ITodo) => {
@@ -31,18 +32,18 @@ const ListTodos = ({ todos, setTodos }: IAddToDo) => {
     }
     const deleteTodo = async (id: number) => {
         if (confirm()) {
+            setLoading(true)
             try {
                 await fetchApi(`todos/${id}`, 'DELETE', [])
                 const newTodo = todos.filter((todo: { id: number }) => {
                     return todo.id !== id
                 })
-                setLoading(false)
                 setTodos(newTodo)
             } catch (error) {
                 console.log(error);
-                setLoading(true)
 
             }
+            setLoading(false)
             console.log('re-render-delete');
 
         }
@@ -53,10 +54,11 @@ const ListTodos = ({ todos, setTodos }: IAddToDo) => {
                 todos?.map((todo: ITodo) => {
                     console.log(todo)
                     return (
+
                         <TodoItem
                             key={todo.id}
                             todo={todo}
-                            Iscompleted={Iscompleted}
+                            IsCompleted={IsCompleted}
                             deleteTodo={deleteTodo}
                         />
                     )

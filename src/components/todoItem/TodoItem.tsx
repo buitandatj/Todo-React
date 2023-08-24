@@ -1,19 +1,20 @@
 import { ITodo } from '../formTodo/FormTodos';
-// import { Loading } from '../loading/Loading';
-// import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
-// import { useContext } from 'react';
+import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
+import { useContext } from 'react';
 interface ITodoItem {
     todo: ITodo;
-    Iscompleted: (id: number) => void;
+    IsCompleted: (id: number) => void;
     deleteTodo: (id: number) => void;
 }
-const TodoItem = ({ todo, Iscompleted, deleteTodo }: ITodoItem) => {
-    // const { loading } = useContext<LoadingContextType | any>(loadingContext)
+const TodoItem = ({ todo, IsCompleted, deleteTodo }: ITodoItem) => {
+    const { loading } = useContext<LoadingContextType>(loadingContext);
+    console.log(loading)
     return (
+
             <div className="form-todo">
                 <input
                     type="checkbox"
-                    onChange={() => Iscompleted(todo.id)}
+                    onChange={() => IsCompleted(todo.id)}
                     checked={todo.completed}
                 />
                 <li

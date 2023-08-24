@@ -6,14 +6,14 @@ export interface LoadingContextType {
     setLoading: (value: boolean) => void;
 }
 type ChildrenProps = { children: JSX.Element };
-export const loadingContext = createContext<LoadingContextType | null>(null)
-export const loadingProvider = ({ children }: ChildrenProps) => {
+export const loadingContext = createContext<LoadingContextType>({ loading: false, setLoading: (value: boolean) => {} })
+
+export const LoadingProvider = ({ children }: ChildrenProps) => {
     
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState<boolean>(true)
     return (
         <loadingContext.Provider value={{ loading, setLoading }}>
             {children}
         </loadingContext.Provider>
     )
-}
+}   

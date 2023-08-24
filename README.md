@@ -9,7 +9,7 @@
 
 # TIMELINE
 
-- Thời gian hoàn thành ước tính: 10 Ngày
+- Thời gian hoàn thành ước tính: 5 Ngày
 - Thời gian hoàn thành:
 
 # TIME SIZE

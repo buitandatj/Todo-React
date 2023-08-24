@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import './AddTodo.scss';
 import Button from '../buttons/Button';
 import { FILTER, ITodo } from '../formTodo/FormTodos';
@@ -18,6 +18,7 @@ export interface ButtonProps {
 const AddTodo = ({ addTodo, todos, setTodos, setFilter}: IAddToDo) => {
     const [todo, setTodo] = useState<string>('')
     const [show, setShow] = useState<boolean>(true)
+
 
     useEffect(() => {
         const show = todos.some(todo => todo.completed)

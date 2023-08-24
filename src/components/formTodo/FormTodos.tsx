@@ -6,6 +6,7 @@ import myAxios, { fetchApi } from '../../api/Api';
 import ListTodos from '../listTodos/ListTodos';
 import { Loading } from '../loading/Loading';
 import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
+import { myId } from '../../constants/Id'
 export interface ITodo {
     id: number,
     title: string,
@@ -16,9 +17,9 @@ export type FILTER = "COMPLETE" | "ACTIVE" | "ALL";
 const Todos = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
     const [filter, setFilter] = useState<FILTER>("ALL");
-    
-    const { loading, setLoading } = useContext<LoadingContextType | null >(loadingContext)!;
-    
+
+    const { loading, setLoading } = useContext<LoadingContextType>(loadingContext);
+    console.log(loading)
     useEffect(() => {
         const getTodo = async () => {
             try {
@@ -54,16 +55,17 @@ const Todos = () => {
                 console.log(error);
             }
         }
-
-        getTodo()
         setLoading(false)
+        getTodo()
+
     }, [filter, setLoading])
 
     const addTodo = async (title: string) => {
+        setLoading(true);
         try {
             const res = await myAxios.post('todos',
                 {
-                    id: Math.floor(Math.random() * 999),
+                    id: myId(),
                     title,
                     completed: false
                 })
@@ -72,6 +74,7 @@ const Todos = () => {
         } catch (error) {
             console.log(error);
         }
+        setLoading(false);
         console.log('re-render-add');
 
     }
@@ -105,8 +108,7 @@ const Todos = () => {
             </button>
 
             <form className="form-top">
-                {loading ? <Loading />
-                    :
+                {loading ? <Loading /> :
                     <ul>
                         <ListTodos todos={todos} setTodos={setTodos} addTodo={function (todo: string): void {
                             throw new Error('Function not implemented.');
@@ -114,6 +116,7 @@ const Todos = () => {
                             throw new Error('Function not implemented.');
                         }} />
                     </ul>
+
                 }
             </form>
         </div>

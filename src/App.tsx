@@ -1,18 +1,16 @@
 import './App.css'
 import Header from './components/header/Header';
 import Todos from './components/formTodo/FormTodos';
-import {  loadingContext } from './context/ContextLoading';
-import { useState } from 'react';
+import { LoadingProvider } from './context/ContextLoading';
 
 function App() {
-  const [loading, setLoading] = useState(true);
   return (
-    <loadingContext.Provider value={{loading,setLoading}} >
+    <LoadingProvider >
       <div className='App'>
         <Header />
         <Todos />
       </div>
-    </loadingContext.Provider>
+    </LoadingProvider>
 
   );
 }
