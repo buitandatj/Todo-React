@@ -1,6 +1,6 @@
 import { ITodo } from '../formTodo/FormTodos';
 import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
-import { useContext } from 'react';
+import { useContext, memo} from 'react';
 interface ITodoItem {
     todo: ITodo;
     IsCompleted: (id: number) => void;
@@ -30,4 +30,4 @@ const TodoItem = ({ todo, IsCompleted, deleteTodo }: ITodoItem) => {
     );
 };
 
-export default TodoItem;
+export default memo(TodoItem); 

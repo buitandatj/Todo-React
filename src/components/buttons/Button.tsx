@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ButtonProps } from '../addTodo/AddTodo';
 import './Button.scss'
 
@@ -11,4 +12,4 @@ const Button = ({ btn }: { btn: ButtonProps }) => {
     );
 };
 
-export default Button;
+export default memo(Button);

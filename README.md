@@ -18,7 +18,10 @@
 
 # TARGET
 - Sử dụng cách gọi API từ thư viện Axios
-- 
+- Sử dụng các Hooks của ReactJS 
+- Xây dựng và chia rõ các component trong ReactJS
+- Tìm hiểu rõ hơn về Typescript
+
 
 # STEP TO STEP GUIDE TO INSTALL AND RUN
 - Tải về từ ('https://github.com/buitandatj/Todo-React.git')

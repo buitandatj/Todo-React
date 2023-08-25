@@ -1,19 +1,14 @@
 {
   "todos": [
     {
-      "id": 517,
-      "title": "quet nha",
-      "completed": false
-    },
-    {
-      "id": 342,
-      "title": "chung ta",
-      "completed": false
-    },
-    {
-      "id": 954,
+      "id": 758,
       "title": "them",
       "completed": false
+    },
+    {
+      "id": 396,
+      "title": "xoa",
+      "completed": true
     }
   ]
 }

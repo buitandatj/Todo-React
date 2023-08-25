@@ -1,9 +1,10 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, memo, useCallback, useContext, useEffect, useState } from 'react';
 import './AddTodo.scss';
 import Button from '../buttons/Button';
 import { FILTER, ITodo } from '../formTodo/FormTodos';
-import myAxios from '../../api/Api';
+import  { fetchApi } from '../../api/Api';
 import { alertInput } from '../../constants/Message';
+import { LoadingContextType, loadingContext } from '../../context/ContextLoading';
 export interface IAddToDo {
     addTodo: (todo: string) => void;
     todos: ITodo[];
@@ -15,14 +16,15 @@ export interface ButtonProps {
     onClick: () => void;
 }
 
-const AddTodo = ({ addTodo, todos, setTodos, setFilter}: IAddToDo) => {
+const AddTodo = ({ addTodo, todos, setTodos, setFilter }: IAddToDo) => {
     const [todo, setTodo] = useState<string>('')
     const [show, setShow] = useState<boolean>(true)
-
+    const { setLoading } = useContext<LoadingContextType>(loadingContext)
 
     useEffect(() => {
         const show = todos.some(todo => todo.completed)
         setShow(show)
+        
     }, [todos])
 
 
@@ -66,18 +68,17 @@ const AddTodo = ({ addTodo, todos, setTodos, setFilter}: IAddToDo) => {
         setTodo('')
     }
 
-    const handleClear = async () => {
-
+    const handleClear = useCallback(async () => {
+        setLoading(true)
         const newTodo = todos.filter(todo => todo.completed);
         for (let todo of newTodo) {
-            await myAxios.delete(`todos/${todo.id}`, {
-            });
+            await fetchApi(`todos/${todo.id}`, 'DELETE', []);
         }
         const newTodos = todos.filter(todo => !todo.completed);
         setTodos(newTodos);
-
+        setLoading(false)
     }
-
+        , [todos, setLoading,setTodos])
     return (
         <div>
             <div>
@@ -104,4 +105,4 @@ const AddTodo = ({ addTodo, todos, setTodos, setFilter}: IAddToDo) => {
     );
 };
 
-export default AddTodo;
+export default memo(AddTodo);

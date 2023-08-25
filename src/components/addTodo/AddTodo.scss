@@ -9,7 +9,7 @@ form {
 
     input {
         height: 50px;
-        width: 400px;
+        width: 70%;
         border: 2px solid black;
         border-radius: 5px;
         outline: none;
@@ -33,4 +33,35 @@ form {
     position: absolute;
     bottom: 10px;
     left: 20%;
+}
+@media screen and (max-width: 800px) {
+    form {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        padding-top: 50px;
+    
+        input {
+            height: 50px;
+            width:100%;
+        
+            &::placeholder{
+                padding-left: 5px;
+            }
+          
+        }
+    
+        .btn-add {
+            @include button();
+            width: 90%;
+            margin-top: 10px;
+        }
+    
+    }
+    
+    .btn-bot {
+        margin-top: 150px;
+        min-height: content;
+        position: absolute;
+    }
 }

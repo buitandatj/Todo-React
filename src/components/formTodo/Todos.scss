@@ -1,6 +1,7 @@
 @import'../buttons/Button.scss';
 
 $my-color: red;
+
 .form {
     user-select: none;
     min-height: 400px;
@@ -19,7 +20,6 @@ $my-color: red;
 
     .form-top {
         display: flex;
-        align-items: center;
         justify-content: center;
         padding-top: 0;
 
@@ -59,4 +59,51 @@ $my-color: red;
 
     }
 
+}
+
+@media screen and (max-width: 800px) {
+    .form {
+        user-select: none;
+        width: 50%;
+        position: relative;
+        justify-content: center;
+        margin: 0 25%;
+        padding-bottom: 100px;
+    
+        .btn_checkAll {
+            margin-left: 10px;
+            border: none;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+    
+        .form-top {
+            display: flex;
+            justify-content: center;
+            padding-top: 0;
+            padding-bottom: 140px;
+    
+            ul {
+                .form-todo {
+    
+                    input {
+                        width: 15px;
+                        height: 15px;
+                        margin-top: 5px;
+                        position: absolute;
+                        left: 10px;
+    
+                    }
+    
+                    button {
+                        position: absolute;
+                        right: 10px;
+                    }
+                }
+            }
+    
+    
+        }
+    
+    }
 }

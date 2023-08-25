@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddTodo from '../addTodo/AddTodo';
 import './Todos.scss';
@@ -60,7 +60,7 @@ const Todos = () => {
 
     }, [filter, setLoading])
 
-    const addTodo = async (title: string) => {
+    const addTodo = useCallback(async (title: string) => {
         setLoading(true);
         try {
             const res = await myAxios.post('todos',
@@ -77,7 +77,7 @@ const Todos = () => {
         setLoading(false);
         console.log('re-render-add');
 
-    }
+    }, [setLoading, todos])
 
 
     const checkAll = async () => {
