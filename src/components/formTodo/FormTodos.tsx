@@ -17,11 +17,14 @@ export type FILTER = "COMPLETE" | "ACTIVE" | "ALL";
 const Todos = () => {
     const [todos, setTodos] = useState<ITodo[]>([]);
     const [filter, setFilter] = useState<FILTER>("ALL");
+    const [loader, setLoader] = useState<boolean>(false);
+
 
     const { loading, setLoading } = useContext<LoadingContextType>(loadingContext);
     console.log(loading)
     useEffect(() => {
         const getTodo = async () => {
+            setLoading(true)
             try {
                 const params: ITodo = {
                     id: 0,
@@ -54,14 +57,15 @@ const Todos = () => {
             } catch (error) {
                 console.log(error);
             }
+             setLoading(false)
         }
-        setLoading(false)
+       
         getTodo()
 
     }, [filter, setLoading])
 
     const addTodo = useCallback(async (title: string) => {
-        setLoading(true);
+    
         try {
             const res = await myAxios.post('todos',
                 {
@@ -74,10 +78,10 @@ const Todos = () => {
         } catch (error) {
             console.log(error);
         }
-        setLoading(false);
+        
         console.log('re-render-add');
 
-    }, [setLoading, todos])
+    }, [todos])
 
 
     const checkAll = async () => {
@@ -100,7 +104,7 @@ const Todos = () => {
 
     return (
         <div className='form'>
-            <AddTodo addTodo={addTodo} todos={todos} setTodos={setTodos} setFilter={setFilter} />
+            <AddTodo addTodo={addTodo} todos={todos} setTodos={setTodos} setFilter={setFilter} loader={loader} setLoader={setLoader} />
             <button onClick={() => checkAll()} type='button' className='btn_checkAll'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
@@ -110,11 +114,11 @@ const Todos = () => {
             <form className="form-top">
                 {loading ? <Loading /> :
                     <ul>
-                        <ListTodos todos={todos} setTodos={setTodos} addTodo={function (todo: string): void {
+                        <ListTodos todos={todos} setTodos={setTodos} addTodo={addTodo} setFilter={function (arg0: FILTER): void {
                             throw new Error('Function not implemented.');
-                        }} setFilter={function (arg0: FILTER): void {
+                        } } loader={loader} setLoader={function (value: boolean): void {
                             throw new Error('Function not implemented.');
-                        }} />
+                        } } />
                     </ul>
 
                 }

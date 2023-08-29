@@ -10,7 +10,8 @@ export const loadingContext = createContext<LoadingContextType>({ loading: false
 
 export const LoadingProvider = ({ children }: ChildrenProps) => {
     
-    const [loading, setLoading] = useState<boolean>(true)
+    const [loading, setLoading] = useState<boolean>(false)
+    
     return (
         <loadingContext.Provider value={{ loading, setLoading }}>
             {children}

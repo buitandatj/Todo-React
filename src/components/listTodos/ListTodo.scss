@@ -1,0 +1,9 @@
+@import '../todoItem/TodoItem.scss';
+
+.load-add {
+    @include loading();
+    border-top: 5px solid rgb(54, 21, 197);
+    position: absolute;
+    left: 330px;
+    margin-top:18px;
+}
