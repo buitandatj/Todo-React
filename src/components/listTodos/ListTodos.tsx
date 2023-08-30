@@ -1,59 +1,60 @@
-import { IAddToDo } from '../addTodo/AddTodo';
-import { ITodo } from '../formTodo/FormTodos';
+import { ITodo } from '../../App';
 import { fetchApi } from '../../api/Api';
 import { confirm } from '../../constants/Message';
 import TodoItem from '../todoItem/TodoItem';
 import { useCallback } from 'react';
 import './ListTodo.scss'
 
+interface IListType {
+    todos: ITodo[];
+    setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
+    loader: boolean
+}
+const ListTodos = ({ todos, setTodos, loader }: IListType) => {
+    console.log('ListTodo');
 
-const ListTodos = ({ todos, setTodos, loader }: IAddToDo) => {
-    const IsCompleted = useCallback(async (id: number) => {
+    const IsCompleted = useCallback(async (id: number, body: ITodo) => {
         try {
-            let obj = null;
-            const newTodos: ITodo[] = todos.map((todo: ITodo) => {
-                if (todo.id === id) {
-                    const newObj = { ...todo, completed: !todo.completed }
-                    obj = newObj;
-                    return newObj
-                }
-                return todo
-            })
-            if (obj) {
-                await fetchApi(`todos/${id}`, 'PUT', obj)
-                setTodos(newTodos)
+
+            console.log(body)
+            if (body) {
+                await fetchApi(`todos/${id}`, 'PUT', body)
+                setTodos((p) => p.map((todo: ITodo) => {
+                    if (todo.id === id) {
+                        return body
+                    }
+                    return todo
+                }))
             }
         } catch (error) {
             console.log(error);
         }
-        console.log('re-render-com');
-    }, [todos, setTodos])
+    }, [])
 
     const deleteTodo = useCallback(async (id: number) => {
         if (confirm()) {
             try {
-                await fetchApi(`todos/${id}`, 'DELETE', [])
-                const newTodo = todos.filter((todo: { id: number }) => {
+                await fetchApi(`todos/${id}`, 'DELETE')
+                setTodos(p => p.filter((todo: { id: number }) => {
                     return todo.id !== id
-                })
-                setTodos(newTodo)
+                }))
             } catch (error) {
                 console.log(error);
 
             }
-            console.log('re-render-delete');
         }
-    }, [todos, setTodos])
+    }, [])
 
     return (
         <div>
             {
-                todos.map((todo: ITodo) => {
-                    console.log(todo)
+                todos?.map((todo: ITodo) => {
                     return (
                         <TodoItem
                             key={todo.id}
-                            todo={todo}
+                            title={todo.title}
+                            completed={todo.completed}
+                            id={todo.id}
                             IsCompleted={IsCompleted}
                             deleteTodo={deleteTodo} />
                     )

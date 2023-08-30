@@ -1,21 +1,23 @@
-import { ITodo } from '../formTodo/FormTodos';
+import { ITodo } from '../../App';
 import { memo, useState } from 'react';
 import './TodoItem.scss'
-interface ITodoItem {
-    todo: ITodo;
-    IsCompleted: (id: number) => void;
+import React from 'react';
+interface ITodoItem extends ITodo {
+
+    IsCompleted: (id: number, body: ITodo) => void;
     deleteTodo: (id: number) => void;
 }
-const TodoItem = ({ todo, IsCompleted, deleteTodo }: ITodoItem) => {
+const TodoItem = ({ completed, id, title, IsCompleted, deleteTodo }: ITodoItem) => {
     const [load, setLoad] = useState(false)
 
     const handleDelete = async () => {
         setLoad(true)
-        await deleteTodo(todo.id)
+        await deleteTodo(id)
         setLoad(false)
     }
     const handleIsComplete = () => {
-        IsCompleted(todo.id)
+        completed = !completed;
+        IsCompleted(id, { completed, id, title });
     }
 
     return (
@@ -23,13 +25,13 @@ const TodoItem = ({ todo, IsCompleted, deleteTodo }: ITodoItem) => {
             <input
                 type="checkbox"
                 onChange={handleIsComplete}
-                checked={todo.completed}
+                checked={completed}
             />
             <li
                 className="list-unstyled"
-                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+                style={{ textDecoration: completed ? 'line-through' : 'none' }}
             >
-                <h5 style={{ color: 'white' }}>{todo.title}</h5>
+                <h5 style={{ color: 'white' }}>{title}</h5>
             </li>
             {load ? (
                 <div className='load'></div>

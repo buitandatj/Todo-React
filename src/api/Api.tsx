@@ -1,12 +1,13 @@
 import axios, { Method } from 'axios';
-import { ITodo } from '../components/formTodo/FormTodos';
+import { ITodo } from '../App';
 
-export const myAxios = axios.create({
-    baseURL: 'http://localhost:3002/',
+
+const myAxios = axios.create({
+    baseURL: process.env.REACT_APP_BASE_URL
 })
-export default myAxios
 
-export const fetchApi = async (url: string, method: Method ,body:ITodo[]) => {
+export default myAxios;
+export const fetchApi = async (url: string, method: Method, body?: ITodo[]| ITodo) => {
     try {
         let data;
         switch (method) {
@@ -14,18 +15,18 @@ export const fetchApi = async (url: string, method: Method ,body:ITodo[]) => {
                 data = await myAxios.get(url)
                 break;
             case 'POST':
-                data = await myAxios.post(url,body)
+                data = await myAxios.post(url, body)
                 break;
             case 'PUT':
-                data = await myAxios.put(url,body)
+                data = await myAxios.put(url, body)
                 break;
-            case 'DELETE': 
-                data=await myAxios.delete(url)
+            case 'DELETE':
+                data = await myAxios.delete(url)
                 break;
             default:
                 break;
-        }        
-        return data ? data.data: null;
+        }
+        return data ? data.data : null;
     } catch (error) {
         console.log(error);
     }

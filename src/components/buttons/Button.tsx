@@ -1,14 +1,15 @@
 import { memo } from 'react';
-import { ButtonProps } from '../addTodo/AddTodo';
-import './Button.scss'
+import './Button.scss';
 
-
-const Button = ({ btn }: { btn: ButtonProps }) => {
+export interface ButtonProps {
+    title: string;
+    onClick: () => void;
+}
+const Button = ({ title,onClick }: ButtonProps ) => {
     console.log('button');
-    
     return (
-        <button className='button' onClick={btn.onClick}>
-            {btn.title}
+        <button  className='button' onClick={onClick}>
+            {title}
         </button>
     );
 };

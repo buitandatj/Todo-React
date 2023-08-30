@@ -39,20 +39,21 @@ $my-color: red;
                 }
 
                 button {
+                    font-size: medium;
                     background-color: transparent;
-                    color: $my-color;
-                    border: 1px solid $my-color;
+                    color: red;
+                    border: 1px solid red;
                     border-radius: 5px;
                     padding: 3px 6px;
                     position: absolute;
                     right: 100px;
-
+                  
                     &:hover {
-                        background-color: $my-color;
-                        color: white;
-                        border: 1px solid $my-color;
+                      background-color: red;
+                      color: white;
+                      border: 1px solid red;
                     }
-                }
+                  }
             }
         }
 
