@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import './AddTodo.scss';
 import { ITodo } from '../../App';
 import { alertInput } from '../../constants/Message';
 import '../todoItem/TodoItem.scss'
 import InputTodo from './InputTodo';
 import React from 'react';
-import { myId } from '../../constants/Id';
+import { randomId } from '../../constants/Id';
 import myAxios from '../../api/Api';
 
 
@@ -14,14 +14,14 @@ export interface IAddToDo {
     setLoader: (value: boolean) => void;
 
 }
-const AddTodo = React.memo(({ setTodos, setLoader }: IAddToDo) => {
+const AddTodo = ({ setTodos, setLoader }: IAddToDo) => {
     console.log('AddTodo');
 
     const addTodo = useCallback(async (title: string) => {
         try {
             const res = await myAxios.post('todos',
                 {
-                    id: myId(),
+                    id: randomId(),
                     title,
                     completed: false
                 })
@@ -40,7 +40,7 @@ const AddTodo = React.memo(({ setTodos, setLoader }: IAddToDo) => {
         } else {
             setLoader(true)
             await addTodo(todo);
-            callback && callback()
+            callback()
         }
         setLoader(false);
     };
@@ -52,11 +52,11 @@ const AddTodo = React.memo(({ setTodos, setLoader }: IAddToDo) => {
             <div>
                 <InputTodo handleSubmit={handleSubmit} />
             </div>
-           
+
 
 
         </div>
     );
-})
+};
 
-export default React.memo(AddTodo);
+export default memo(AddTodo);

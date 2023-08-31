@@ -1,14 +1,13 @@
 import { ITodo } from '../../App';
 import { memo, useState } from 'react';
 import './TodoItem.scss'
-import React from 'react';
 interface ITodoItem extends ITodo {
-
     IsCompleted: (id: number, body: ITodo) => void;
     deleteTodo: (id: number) => void;
 }
 const TodoItem = ({ completed, id, title, IsCompleted, deleteTodo }: ITodoItem) => {
     const [load, setLoad] = useState(false)
+    console.log('ItemTodo');
 
     const handleDelete = async () => {
         setLoad(true)

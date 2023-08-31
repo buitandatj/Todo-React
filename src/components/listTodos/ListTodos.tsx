@@ -15,11 +15,9 @@ const ListTodos = ({ todos, setTodos, loader }: IListType) => {
 
     const IsCompleted = useCallback(async (id: number, body: ITodo) => {
         try {
-
-            console.log(body)
             if (body) {
                 await fetchApi(`todos/${id}`, 'PUT', body)
-                setTodos((p) => p.map((todo: ITodo) => {
+                setTodos((e) => e.map((todo: ITodo) => {
                     if (todo.id === id) {
                         return body
                     }

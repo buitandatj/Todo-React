@@ -1,19 +1,9 @@
 {
   "todos": [
     {
+      "completed": false,
       "id": 474,
-      "title": "viec 1",
-      "completed": false
-    },
-    {
-      "id": 534,
-      "title": "viec 2",
-      "completed": false
-    },
-    {
-      "id": 671,
-      "title": "viec 3",
-      "completed": false
+      "title": "viec 1"
     }
   ]
 }

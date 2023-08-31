@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, memo, useState } from 'react'
 
 interface InputTodoProps {
   handleSubmit: (todo: string, callback: () => void | undefined) => void;
 }
-const InputTodo = React.memo(({ handleSubmit }: InputTodoProps) => {
+const InputTodo = ({ handleSubmit }: InputTodoProps) => {
   console.log('inputTodo');
   
   const [todo, setTodo] = useState<string>('');
@@ -30,6 +30,6 @@ const InputTodo = React.memo(({ handleSubmit }: InputTodoProps) => {
       <button className='btn-add' type='submit'>Lưu</button>
     </form>
   )
-})
+}
 
-export default React.memo(InputTodo)
+export default memo(InputTodo)

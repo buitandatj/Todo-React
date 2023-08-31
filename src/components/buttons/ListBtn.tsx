@@ -7,7 +7,6 @@ interface IListBtn {
     todos: ITodo[];
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
     setFilter: (arg0: FILTER) => void;
-    // title:string;
 }
 const ListBtn = ({ setFilter, setTodos, todos}: IListBtn) => {
 

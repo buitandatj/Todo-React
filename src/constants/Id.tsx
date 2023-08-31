@@ -1,1 +1,1 @@
-export const myId = ()=> Math.floor(Math.random()*999)
+export const randomId = ()=> Math.floor(Math.random()*999)
