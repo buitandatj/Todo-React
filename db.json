@@ -1,9 +1,14 @@
 {
   "todos": [
     {
-      "completed": false,
+      "completed": true,
       "id": 474,
       "title": "viec 1"
+    },
+    {
+      "id": 601,
+      "title": "viec 3",
+      "completed": true
     }
   ]
 }
