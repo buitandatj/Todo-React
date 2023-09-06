@@ -8,10 +8,12 @@ interface IListBtn {
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
     setFilter: (arg0: FILTER) => void;
 }
-const ListBtn = ({ setFilter, setTodos, todos}: IListBtn) => {
+const ListBtn = ({ setFilter, setTodos, todos }: IListBtn) => {
 
     const show = useMemo(() => todos?.some(todo => todo.completed), [todos]);
+    
     console.log('listBtn');
+
     const handleClear = useCallback(async () => {
         const newTodo = todos.filter(todo => todo.completed);
         for (let todo of newTodo) {
@@ -48,9 +50,9 @@ const ListBtn = ({ setFilter, setTodos, todos}: IListBtn) => {
     ], []);
     return (
         <div className='btn-bot'>
-            {listBtn?.map((btn,index) => (
+            {listBtn?.map((btn, index) => (
                 btn.title === 'Clear' && show ?
-                    <Button {...btn} onClick={handleClear} key={index}/> :
+                    <Button {...btn} onClick={handleClear} key={index} /> :
                     btn.title !== 'Clear' && <Button {...btn} />
             ))}
 

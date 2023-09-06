@@ -1,4 +1,5 @@
 /* eslint-disable array-callback-return */
+import { Link } from 'react-router-dom';
 import './App.scss'
 import { fetchApi } from './api/Api';
 import AddTodo from './components/addTodo/AddTodo';
@@ -66,6 +67,9 @@ function App() {
     <>
       <div className='App'>
         <Header />
+        <Link to='/'  className='btn-exit'>
+          <p>Exit</p>
+        </Link>
         <div className='form'>
           <AddTodo setTodos={setTodos} setLoader={setLoader} />
           <button onClick={() => checkAll()} type='button' className='btn_checkAll'>

@@ -17,7 +17,7 @@ export interface IAddToDo {
 const AddTodo = ({ setTodos, setLoader }: IAddToDo) => {
     console.log('AddTodo');
 
-    const addTodo = useCallback(async (title: string) => {
+    const addTodo = async (title: string) => {
         try {
             const res = await myAxios.post('todos',
                 {
@@ -32,7 +32,7 @@ const AddTodo = ({ setTodos, setLoader }: IAddToDo) => {
         }
 
 
-    }, [setTodos])
+    }
     const handleSubmit = async (todo = '', callback: () => void | undefined) => {
 
         if (todo === '') {
@@ -52,9 +52,6 @@ const AddTodo = ({ setTodos, setLoader }: IAddToDo) => {
             <div>
                 <InputTodo handleSubmit={handleSubmit} />
             </div>
-
-
-
         </div>
     );
 };

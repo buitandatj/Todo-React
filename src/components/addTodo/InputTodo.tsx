@@ -1,12 +1,13 @@
-import React, { ChangeEvent, memo, useState } from 'react'
+import React, { ChangeEvent,  useState } from 'react'
 
 interface InputTodoProps {
   handleSubmit: (todo: string, callback: () => void | undefined) => void;
 }
 const InputTodo = ({ handleSubmit }: InputTodoProps) => {
   console.log('inputTodo');
-  
+
   const [todo, setTodo] = useState<string>('');
+
   const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
 
@@ -32,4 +33,4 @@ const InputTodo = ({ handleSubmit }: InputTodoProps) => {
   )
 }
 
-export default memo(InputTodo)
+export default InputTodo;
