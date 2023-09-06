@@ -52,7 +52,7 @@ function App() {
   const checkAll = async () => {
     try {
       const newTodos: ITodo[] = todos?.map((todo: ITodo) => {
-        return { ...todo, completed: !todo.completed };
+        return { ...todo, completed: !todos.every(todo => todo.completed) };
       });
       await Promise.resolve(newTodos?.map(async (todo) => {
         await fetchApi(`todos/${todo.id}`, 'PUT', todo);

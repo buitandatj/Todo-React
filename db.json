@@ -6,9 +6,9 @@
       "title": "viec 1"
     },
     {
+      "completed": true,
       "id": 601,
-      "title": "viec 3",
-      "completed": true
+      "title": "viec 3"
     }
   ]
 }
