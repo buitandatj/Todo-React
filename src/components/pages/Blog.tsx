@@ -1,11 +1,7 @@
-import React from 'react';
-const style = {
-    display: "flex",
-    justifyContent: 'center',
-}
+import './style.scss';
 const Blog = () => {
     return (
-        <h1 style={style}>
+        <h1 className='title-child'>
             BLOG
         </h1>
     );

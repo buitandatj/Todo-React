@@ -1,11 +1,11 @@
-import { memo, useCallback } from 'react';
-import './AddTodo.scss';
+import { memo } from 'react';
+import './style.scss';
 import { ITodo } from '../../App';
-import { alertInput } from '../../constants/Message';
-import '../todoItem/TodoItem.scss'
+import { alertInput } from '../../constants/id';
+import '../todoItem/style.scss'
 import InputTodo from './InputTodo';
 import React from 'react';
-import { randomId } from '../../constants/Id';
+import { randomId } from '../../constants/id';
 import myAxios from '../../api/Api';
 
 

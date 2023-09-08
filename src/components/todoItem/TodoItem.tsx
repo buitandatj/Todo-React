@@ -1,6 +1,6 @@
 import { ITodo } from '../../App';
 import { memo, useState } from 'react';
-import './TodoItem.scss'
+import './style.scss'
 interface ITodoItem extends ITodo {
     IsCompleted: (id: number, body: ITodo) => void;
     deleteTodo: (id: number) => void;

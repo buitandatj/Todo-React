@@ -1,0 +1,61 @@
+@import '../header/style.scss';
+
+@mixin button() {
+    height: 50px;
+    width: 90px;
+    border: 2px solid black;
+    margin-left: 30px;
+    border-radius: 5px;
+    color: $text-color;
+    cursor: pointer;
+    background-color: rgba(197, 197, 196, 0.459);
+    ;
+}
+
+.button {
+    @include button();
+
+    &:hover {
+        background-color: black;
+        border: 2px solid rgba(197, 197, 196, 0.459);
+        color: wheat;
+    }
+}
+
+@import '../header/style.scss';
+
+@mixin button() {
+    height: 50px;
+    width: 90px;
+    border: 2px solid black;
+    margin-left: 20px;
+    border-radius: 5px;
+    color: $text-color;
+    cursor: pointer;
+    background-color: rgba(197, 197, 196, 0.459);
+    ;
+}
+
+.button {
+    @include button();
+
+    &:hover {
+        background-color: black;
+        border: 2px solid rgba(197, 197, 196, 0.459);
+        color: wheat;
+    }
+}
+
+@media screen and (min-width: 1872px) {
+    .button {
+        margin-left: 40px;
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .button {
+        margin-left: 0px;
+        width: 100%;
+    }
+}

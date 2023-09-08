@@ -6,14 +6,9 @@
       "completed": false
     },
     {
-      "id": 323,
-      "title": "lau nha",
-      "completed": false
-    },
-    {
+      "completed": true,
       "id": 162,
-      "title": "nhau nhet",
-      "completed": false
+      "title": "nhau nhet"
     }
   ]
 }

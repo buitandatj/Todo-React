@@ -1,4 +1,4 @@
-@import'../buttons/Button.scss';
+@import'../buttons/style.scss';
 @import '../formTodo/Todos.scss';
 
 form {
@@ -15,10 +15,11 @@ form {
         outline: none;
         background-color: transparent;
         caret-color: $my-color;
-        &::placeholder{
+
+        &::placeholder {
             padding-left: 5px;
         }
-      
+
     }
 
     .btn-add {
@@ -34,31 +35,32 @@ form {
     bottom: 10px;
     left: 20%;
 }
+
 @media screen and (max-width: 800px) {
     form {
         display: block;
         align-items: center;
         justify-content: center;
         padding-top: 50px;
-    
+
         input {
             height: 50px;
-            width:100%;
-        
-            &::placeholder{
+            width: 100%;
+
+            &::placeholder {
                 padding-left: 5px;
             }
-          
+
         }
-    
+
         .btn-add {
             @include button();
             width: 90%;
             margin-top: 10px;
         }
-    
+
     }
-    
+
     .btn-bot {
         margin-top: 150px;
         min-height: content;

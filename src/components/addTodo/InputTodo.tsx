@@ -33,4 +33,4 @@ const InputTodo = ({ handleSubmit }: InputTodoProps) => {
   )
 }
 
-export default InputTodo;
+export default InputTodo; 

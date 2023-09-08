@@ -1,4 +1,4 @@
-import './Loading.css'
+import './style.scss'
 
 
 export const Loading = () => {

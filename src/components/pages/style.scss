@@ -33,11 +33,12 @@ $color-b: black;
 
         }
     }
-    .menus-page{
+
+    .menus-page {
         display: flex;
         justify-content: center;
 
-        .menu-child{
+        .menu-child {
             margin: 10px;
             background-color: transparent;
             border: 2px solid $color-w;
@@ -52,4 +53,9 @@ $color-b: black;
     .button-app {
         margin-top: 40%;
     }
+}
+
+.title-child {
+    display: flex;
+    justify-content: center;
 }

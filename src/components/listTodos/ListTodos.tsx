@@ -1,9 +1,9 @@
 import { ITodo } from '../../App';
 import { fetchApi } from '../../api/Api';
-import { confirm } from '../../constants/Message';
+import { confirm } from '../../constants/id';
 import TodoItem from '../todoItem/TodoItem';
 import { useCallback } from 'react';
-import './ListTodo.scss'
+import './style.scss'
 
 interface IListType {
     todos: ITodo[];

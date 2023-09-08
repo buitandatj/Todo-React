@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import './pages.scss'
+import './style.scss'
 import Header from '../header/Header';
 const Pages = () => {
     return (

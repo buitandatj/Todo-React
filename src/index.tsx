@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Pages from './components/pages/Pages';
+import Pages from './components/pages/Home';
 import App from './App';
 import { LoadingProvider } from './context/ContextLoading';
 import Blog from './components/pages/Blog';

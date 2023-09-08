@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import './Button.scss';
+import './style.scss';
 
 export interface ButtonProps {
     title: string;

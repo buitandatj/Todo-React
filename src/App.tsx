@@ -38,7 +38,7 @@ function App() {
                 return todo.completed === false
               }
             }
-          );
+          )
           setTodos(newTodo);
 
         }
